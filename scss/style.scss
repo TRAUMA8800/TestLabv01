@@ -27,7 +27,7 @@ button {
 }
 
 button.frame0__lightbutton,
-button.bluebutton {
+button.frame6__bluebutton {
     //указать класс последнего фрейма
     font-size: 20px;
     line-height: 24px;
@@ -492,6 +492,7 @@ main {
         width: 100%;
         max-width: 592px;
         height: 198px;
+        margin: 16px 0;
 
         @media (max-width: 956px) {
             margin: 0 auto;
@@ -571,49 +572,119 @@ main {
 .frame3 {
     background-color: #F6F8FA;
     width: 100%;
-}
+    padding: 57px 0 45px 0;
+    margin-bottom: 80px;
 
+    &__title {
+        text-align: center;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 600;
+        margin-bottom: 32px;
+
+        @media (max-width: 375px) {
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 26px;
+        }
+    }
+
+    //frame3 media
+    @media (max-width: 768px) {}
+
+    @media (max-width: 375px) {}
+
+    @media (max-width: 320px) {}
+
+    & .container {
+        position: relative;
+        @media (max-width: 420px) {
+            max-width: 420px;
+            padding: 0;
+        }
+
+        @media (max-width: 375px) {
+            max-width: 375px;
+            padding: 0;
+        }
+
+        @media (max-width: 320px) {
+            max-width: 320px;
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 56px;
+    }
+}
+//я использовал отдельный svg, потому что изначальная идея использовать button от слайдера с background-image svg, но тогда currentColor не воспринимал color у родителя. Пришлось создать отдельно кнопки и в js забиндить их под задачи кнопок слайдера.
+.slick_arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    color: #C2C8CD;
+    transition: 0.15s ease-in;
+    cursor: pointer;
+    &:hover {
+        color: #2A6CEA;
+    }
+    &.slick_prev {
+        left: 0;
+    }
+    &.slick_next {
+        right: 0;
+    }
+    @media (max-width: 1089px) {
+        display: none;
+    }
+}
 .slider {
     // КЛАСС СЛАЙДЕРА. В САМОМ НИЗУ БОЛЬШЕ НАСТРОЕК
     position: relative;
 
     & .slick-arrow {
         position: absolute;
-        top: 50%;
-        z-index: 10;
+        top: 0;
         font-size: 0;
-        width: 32px;
-        height: 32px;
+        width: 0;
+        height: 0;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: 100%;
         background-color: #00000000;
-
+        opacity: 0;
+        
         &.slick-prev {
             left: 0;
-            background-image: url(/images/frame3/slider/arrow-left.svg);
-            background-position: 0 0;
-            background-repeat: no-repeat;
-            background-size: 100%;
         }
 
         &.slick-next {
             right: 0;
-            background-image: url(/images/frame3/slider/arrow-right.svg);
         }
-        &.slick-dots {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    }
+
+    & .slick-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .slick-dots li {
+        list-style: none;
+        margin: 0 8.5px;
+
+        &.slick-active button {
+            background-color: #2A6CEA;
         }
-        &.slick-dots li {
-            list-style: none;
-            margin: 0 8.5px;
-        }
-        &.slick-dots button {
-            font-size: 0;
-            width: 8px;
-            height: 8px;
-            color: #C2C8CD;
-            border-radius: 50%;
-        }
+    }
+
+    & .slick-dots button {
+        font-size: 0;
+        width: 8px;
+        height: 8px;
+        color: #C2C8CD;
+        border-radius: 50%;
     }
 
     // сам блок
@@ -621,11 +692,12 @@ main {
         padding: 22px 22px 0 22px;
         background-color: #fff;
         border-radius: 8px;
-        box-shadow: 0 5px 24px #0000001A;
         max-width: 341px;
+       
 
         @media (max-width: 768px) {
             max-width: 351px;
+            margin: 0 auto 40px auto;
         }
 
         @media (max-width: 375px) {
@@ -634,6 +706,7 @@ main {
 
         @media (max-width: 320px) {
             max-width: 288px;
+            margin: 0 auto 38px auto;
         }
     }
 
@@ -686,6 +759,309 @@ main {
         line-height: 24px;
         font-weight: 400;
         color: #191C1F;
+        margin-bottom: 38px;
+    }
+}
+
+//FRAME4
+.frame4 {
+    margin-bottom: 80px;
+
+    &__title {
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 600;
+        color: #191C1F;
+        text-align: center;
+        padding-bottom: 41px;
+        border-bottom: 1px solid #F6F8FA;
+        margin: 0 104px;
+
+        @media (max-width: 768px) {
+            margin: 0;
+        }
+
+        @media (max-width: 320px) {
+            padding-bottom: 26px;
+        }
+    }
+
+    &__faq {
+        margin: 0 104px;
+
+        @media (max-width: 768px) {
+            margin: 0;
+        }
+    }
+
+    &__block {
+        border-bottom: 1px solid #F6F8FA;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+
+            .frame4__question,
+            svg {
+                color: #2A6CEA;
+                pointer-events: none;
+            }
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        rotate: 0deg;
+        transition: 0.15s ease-in;
+
+        &.open {
+            rotate: 45deg;
+        }
+    }
+
+    &__question {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 600;
+        color: #191C1F;
+        margin: 24px 0;
+        transition: 0.15s ease-in;
+        padding-right: 44px;
+
+        @media (max-width: 375px) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__answer {
+        display: none;
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 400;
+        color: #5E646A;
+        margin: 24px 0;
+        pointer-events: none;
+        transition: 0.15s ease-in;
+
+        &.open {
+            display: block;
+        }
+
+        @media (max-width: 375px) {
+            line-height: 28px;
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 56px;
+    }
+}
+
+.frame5 {
+    background-color: #F6F8FA;
+    padding: 68px 0;
+    margin-bottom: 80px; //отступ перед 6-м фреймом
+
+    &__column {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__block {
+        max-width: 592px;
+        margin-bottom: 37px;
+
+        &:nth-child(odd) {
+            margin-right: 32px;
+        }
+
+        @media (max-width: 1235px) {
+            margin-right: 0;
+            margin-bottom: 20px;
+            max-width: 728px;
+            ;
+        }
+    }
+
+    &__title {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 600;
+        color: #191C1F;
+        margin-bottom: 17px;
+
+        @media (max-width: 1235px) {
+            margin-bottom: 46px;
+        }
+
+        @media (max-width: 805px) {
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 375px) {
+            margin-bottom: 14px;
+        }
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 28px;
+        font-weight: 400;
+        color: #191C1F;
+    }
+
+    @media (max-width: 768px) {
+        padding: 20px 0 32px 0;
+        margin-bottom: 56px;
+    }
+
+    @media (max-width: 375px) {
+        padding: 20px 0;
+    }
+
+    @media (max-width: 320px) {
+        padding: 16px 0 19px 0;
+    }
+}
+
+//FRAME6
+.frame6 {
+    margin-bottom: 80px;
+    @media (max-width: 810px) {
+        max-width: 787px;
+        margin: 0 auto 80px auto;
+    }
+
+    &__formbox {
+        margin: 0 auto;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 600;
+        color: #191C1F;
+        margin-bottom: 44px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 816px;
+        margin: 0 auto;
+    }
+    &__namebox,
+    &__phonebox {
+        position: relative;
+        min-width: 288px;
+        max-width: 384px;
+        width: 100%;
+        height: 64px;
+        margin: 0 auto 30px auto;
+        &-label {
+            position: absolute;
+            left: 16px;
+            top: 8px;
+            color: #83898F;
+            font-size: 14px;
+            line-height: 24px;
+            font-weight: 400;
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.15s ease-in;
+            &.activated {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 810px) {
+            margin: 0 auto 20px auto;
+        }
+        @media (max-width: 330px) {
+            min-width: auto;
+        }
+    }
+    &__input {
+        width: 100%;
+        height: 100%;
+        background-color: #F6F8FA;
+        border-radius: 4px;
+        border: 2px solid #F6F8FA;
+        padding: 16px;
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 400;
+        color: #5E646A;
+        transition: 0.15s ease-in;
+        cursor: text;
+        &:focus {
+            border-color: #C2C8CD;
+            background-color: #FFFFFF;
+            padding: 28px 16px 4px 16px;
+            color: #191C1F;
+        }
+    }
+    &__p {
+        min-width: 288px;
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 400;
+        width: 100%;
+        max-width: 384px;
+        color: #191C1F;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        @media (max-width: 810px) {
+            margin: 0 auto 20px auto;
+        }
+        @media (max-width: 330px) {
+            min-width: auto;
+        }
+    }
+
+    &__checkbox {
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+        @media (max-width: 330px) {
+            min-width: auto;
+        }
+    }
+
+    &__bluebutton {
+        background-color: #2A6CEA;
+        color: #fff;
+        width: 100%;
+        max-width: 384px;
+        min-width: 288px;
+        margin: 0 auto;
+
+        &:hover {
+            background-color: #397DFF;
+        }
+        @media (max-width: 330px) {
+            min-width: auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 56px;
     }
 }
 
@@ -703,16 +1079,34 @@ footer {
 
 .slick-list {
     overflow: hidden;
+    padding: 0;
 }
 
 .slick-track {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 50px;
+
+    @media (max-width: 375px) {
+        margin-bottom: 40px;
+    }
+
+    @media (max-width: 320px) {
+        margin-bottom: 38px;
+    }
 }
 
 .slick-slide {}
 
-.slick-slide.slick-active {}
+.slick-slide.slick-active {
+    box-shadow: 0 5px 24px 0 #0000001A;
+}
 
-.slick-slide.slick-current {}
+.slick-slide.slick-current {
+    box-shadow: 0 5px 24px 0 #0000001A;
+}
 
 .slick-slide.slick-center {}
